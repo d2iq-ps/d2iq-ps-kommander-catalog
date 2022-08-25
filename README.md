@@ -3,13 +3,13 @@
 To add this to a project simply create a gitrepository resource as shown below to the given project
 
 ```
-export PROJECT=customcatalogdemo
+export PROJECT=lacework
 
 kubectl apply -f - <<EOF
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
-  name: demo-project-repo
+  name: lacework-project-repo
   namespace: ${PROJECT}
   labels:
     kommander.d2iq.io/gitapps-gitrepository-type: catalog
@@ -17,9 +17,9 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: master
+    branch: lacework
   timeout: 20s
-  url: https://github.com/arbhoj/kommander-catalog.git
+  url: https://github.com/d2iq-ps/d2iq-ps-kommander-catalog.git
 EOF
 
 ``` 
