@@ -1,13 +1,30 @@
-# d2iq-ps-kommander-catalog
-A code repo to host examples and demos for customers for Custom Catalogs
+## This is a demo custom catalog repo for DKP 2.1.1 +
 
-## License
+To add this to a project simply create a gitrepository resource as shown below to the given project
 
-This is apache 2 license. you are free to copy and use to build your own catalog of DKP catalog. No support is offered in its use. 
+```
+export PROJECT=customcatalogdemo
 
+kubectl apply -f - <<EOF
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: demo-project-repo
+  namespace: ${PROJECT}
+  labels:
+    kommander.d2iq.io/gitapps-gitrepository-type: catalog
+    kommander.d2iq.io/gitrepository-type: catalog
+spec:
+  interval: 1m0s
+  ref:
+    branch: master
+  timeout: 20s
+  url: https://github.com/arbhoj/kommander-catalog.git
+EOF
 
+``` 
 
-# Contact <email> if you need assistance and support to establish a relationship to develop yor own with D2iQ Professional services. 
-  
- 
+Here is a screenshot of the custom catalogs in the DKP Dashboard
+
+![Kommander Portal With Custom Catalog Item](./Custom_Catalog_2.1.1.png)
 
