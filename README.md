@@ -1,15 +1,15 @@
-## This is a demo custom catalog repo for DKP 1.8.4 +
+## This is a demo custom catalog repo for DKP 2.1.1 +
 
 To add this to a project simply create a gitrepository resource as shown below to the given project
 
 ```
-export PROJECT=lacework
+export PROJECT=customcatalogdemo
 
 kubectl apply -f - <<EOF
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
-  name: lacework-project-repo
+  name: demo-project-repo
   namespace: ${PROJECT}
   labels:
     kommander.d2iq.io/gitapps-gitrepository-type: catalog
@@ -17,9 +17,9 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: lacework
+    branch: master
   timeout: 20s
-  url: https://github.com/d2iq-ps/d2iq-ps-kommander-catalog.git
+  url: https://github.com/arbhoj/kommander-catalog.git
 EOF
 
 ``` 
